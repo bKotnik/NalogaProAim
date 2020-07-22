@@ -1,0 +1,251 @@
+﻿<Window x:Class="NalogaProAim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NalogaProAim"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="750" Width="1190">
+    
+    <Grid Background="{StaticResource BackgroundColor}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.20*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.47*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+      
+        <!--SEPARATORS-->
+        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="right" 
+                   Grid.Column="0" Grid.RowSpan="4"
+                   Opacity="0.5" Width="1" Height="1000" 
+                   Stroke="{DynamicResource MainColor}"/>
+        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="right" 
+                   Grid.Column="1" Grid.RowSpan="4"
+                   Opacity="0.5" Width="1" Height="1000" 
+                   Stroke="{DynamicResource MainColor}"/>
+
+        <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" 
+                   Opacity="0.5" Background="{DynamicResource MainColor}">
+        </Separator>
+        <!--SEPARATORS-->
+
+        <TextBlock Text="Preizkus" Grid.Row="0" Grid.Column="1"
+                   Foreground="{StaticResource TitleColor}" FontWeight="Medium"
+                   FontSize="36" HorizontalAlignment="Center">
+        </TextBlock>
+
+        <Button x:Name="btnInsertKos" Grid.Column="0" Grid.RowSpan="3"
+                Style="{StaticResource MainBtnStyle}" Content="Insert kos"
+                Click="InsertKos" Margin="5 200 5 0">
+        </Button>
+
+        <Button x:Name="btnInsertDelovniNalog" Grid.Column="0" Grid.RowSpan="3"
+                Style="{StaticResource MainBtnStyle}" Content="Insert delovni nalog"
+                Click="InsertDelovniNalog" Margin="5 300 5 0">
+        </Button>
+
+        <TextBlock Text="GUID of last added kos:" Foreground="{StaticResource TextColor}"
+                   FontWeight="Bold" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" Grid.Row="1"
+                   Grid.Column="1" Margin="0 0 0 35"/>
+        <TextBlock x:Name="readGuid" Grid.Row="1" Grid.Column="1"
+                   Text="" Foreground="{StaticResource TextColor}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+        </TextBlock>
+        
+        <!--LISTVIEW TO DISPLAY DATA FROM TABLES-->
+        <ListView Name="lvKosi" Grid.Column="1" Style="{DynamicResource listViewStyle}" Grid.Row="2"
+                  SelectionMode="Extended" ItemContainerStyle="{DynamicResource listViewItemStyle}"
+                  Grid.RowSpan="2" Foreground="White">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{DynamicResource ColumnHeader}">
+
+                    <!--KOS ID COLUMN-->
+                    <GridViewColumn x:Name="kos_id_column" Width="100">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding Id}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="ID_KOS" Height="30"
+                                FontWeight="Bold" Focusable="False" IsEnabled="False"
+                                Style="{DynamicResource ListViewBtnStyle}">
+                        </Button>
+                    </GridViewColumn>
+
+                    <!--GUID COLUMN-->
+                    <GridViewColumn x:Name="guid_column" Width="160">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding Guid}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="GUID" Height="30" Focusable="False"
+                                FontWeight="Bold" Style="{DynamicResource ListViewBtnStyle}"
+                                IsEnabled="False">
+                        </Button>
+                    </GridViewColumn>
+
+                    <!--DELOVNI NALOG COLUMN-->
+                    <GridViewColumn x:Name="delovni_nalog_column" Width="160">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding DelovniNalog}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="DELOVNI NALOG" Height="30" Focusable="False"
+                                FontWeight="Bold" Style="{DynamicResource ListViewBtnStyle}"
+                                IsEnabled="False">
+                        </Button>
+                    </GridViewColumn>
+
+                    <!--CAS VNOSA COLUMN-->
+                    <GridViewColumn x:Name="cas_vnosa_column" Width="160">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding CasVnosa}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="CAS VNOSA" Height="30" Focusable="False"
+                                FontWeight="Bold" Style="{DynamicResource ListViewBtnStyle}"
+                                IsEnabled="False">
+                        </Button>
+                    </GridViewColumn>
+
+                    <!--FK DELOVNI NALOG COLUMN-->
+                    <GridViewColumn x:Name="fk_delovni_nalog_column" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding Id_delovni_nalog}" FontSize="14" 
+                                                   HorizontalAlignment="Center"
+                                                   Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="FK ID DELO. NALOG" Height="30" Focusable="False"
+                                FontWeight="Bold" Style="{DynamicResource ListViewBtnStyle}"
+                                IsEnabled="False">
+                        </Button>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Name="lvDelovniNalog" Grid.Row="2" Grid.Column="3" Grid.RowSpan="2"
+                  ItemContainerStyle="{DynamicResource listViewItemStyle}"
+                  Style="{DynamicResource listViewStyle}" SelectionMode="Extended">
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{DynamicResource ColumnHeader}">
+
+                    <!--DELOVNI NALOG ID COLUMN-->
+                    <GridViewColumn x:Name="delovniNalog_id_column" Width="165">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding Id}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="ID_DELOVNI NALOG" Height="30"
+                                FontWeight="Bold" Focusable="False" IsEnabled="False"
+                                Style="{DynamicResource ListViewBtnStyle}">
+                        </Button>
+                    </GridViewColumn>
+
+                    <!--ST KOSOV COLUMN-->
+                    <GridViewColumn x:Name="st_kosov_column" Width="162">
+
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox Text="{Binding StKosov}" FontSize="14" HorizontalAlignment="Center"
+                                                 Style="{DynamicResource ReadOnlyTextBox}">
+                                    </TextBox>
+
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                        <Button Content="ST. KOSOV" Height="30" Focusable="False"
+                                FontWeight="Bold" Style="{DynamicResource ListViewBtnStyle}"
+                                IsEnabled="False">
+                        </Button>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

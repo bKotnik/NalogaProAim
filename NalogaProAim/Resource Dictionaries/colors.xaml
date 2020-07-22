@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:NalogaProAim.Resource_Dictionaries">
+
+    <!--MAIN COLOR-->
+        <SolidColorBrush x:Key="MainColor" Color="#059401"/>
+        <SolidColorBrush x:Key="MainColor50" Color="#50059401" />
+        <!--50 opacity-->
+        <Color x:Key="MainGradientColor">#059401</Color>
+        <Color x:Key="MainColor42">#42059401</Color>
+        <!--42 opacity for gradients-->
+        <Color x:Key="MainColor95">#95059401</Color>
+        <!--95 opacity for gradients-->
+        <!--MAIN COLOR-->
+
+
+        <!--SECONDARY COLOR-->
+        <SolidColorBrush x:Key="SecondaryColor" Color="#eda812"></SolidColorBrush>
+        <Color x:Key="SecondaryGradientColor">#eda812</Color>
+        <!--SECONDARY COLOR-->
+
+
+        <!--RED COLOR - EXIT/CANCEL-->
+        <SolidColorBrush x:Key="ExitColor" Color="#810510" />
+        <!--RED COLOR - EXIT/CANCEL-->
+
+
+        <!--TITLE COLOR-->
+        <SolidColorBrush x:Key="TitleColor" Color="#4db5a7" />
+        <Color x:Key="TitleGradientColor">#4db5a7</Color>
+        <!--TITLE COLOR-->
+
+
+        <!--TEXT COLOR-->
+        <SolidColorBrush x:Key="TextColor" Color="#E8E8E8" />
+        <Color x:Key="TextGradientColor">#E8E8E8</Color>
+        <!--TEXT COLOR-->
+
+
+        <!--BACKGROUND-->
+        <SolidColorBrush x:Key="BackgroundColor" Color="#090c0f" />
+        <Color x:Key="BackgroundGradientColor">#090c0f</Color>
+        <SolidColorBrush x:Key="BackgroundColorMasterPassword" Color="#75283a3a"/>
+        <!--BACKGROUND-->
+
+
+        <!--WARNING COLOR - ORANGE-->
+        <SolidColorBrush x:Key="WarningColor" Color="#f9b302"/>
+        <!--WARNING COLOR - ORANGE-->
+
+        <!--SELECTION BRUSH COLOR-->
+        <SolidColorBrush x:Key="SelectionBrushColor" Color="{DynamicResource MainGradientColor}"/>
+        <Color x:Key="SelectionGradientColor">#95555752</Color>
+        <!--SELECTION BRUSH COLOR-->
+
+</ResourceDictionary>
