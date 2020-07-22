@@ -125,6 +125,9 @@ namespace NalogaProAim
 
                 /*
                  * Tukaj sem dodal atribut "id_dn", ki služi kot tuji ključ
+                 * Delovni nalog ima lahko več kosov, en kos ima lahko pa samo 1 delovni nalog, torej je smiselno, da se tukaj ustvari
+                 * s tem kljucem lahko potem zdruzujemo vrstice, saj je ta atribut tukaj kot tuji kljuc, v tabeli DelovniNalogi je pa ubistvu primarni kljuc
+                 * in se da lepo povezati ali z JOIN ali pa z WHERE
                  */
             }
         }
